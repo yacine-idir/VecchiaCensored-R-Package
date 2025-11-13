@@ -1,0 +1,5 @@
+CXX_STD = CXX11
+PKG_CPPFLAGS = -I"/home/midir1/R/x86_64-pc-linux-gnu-library/4.5/Rcpp/include" -I"/home/midir1/R/x86_64-pc-linux-gnu-library/4.5/RcppArmadillo/include"
+PKG_CXXFLAGS = $(SHLIB_OPENMP_CXXFLAGS)
+PKG_LIBS = $(SHLIB_OPENMP_CXXFLAGS) $(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS)
+
