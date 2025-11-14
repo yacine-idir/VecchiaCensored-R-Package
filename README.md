@@ -17,15 +17,17 @@ An R package for efficient spatial modeling with Vecchia approximation, supporti
   - Flexible range parameters (shared or varying)
 
 ## Installation
-
-Install from GitHub using:
+After updating R, you can do it from "https://cran.r-project.org/", you will need Rtools to install from github, install it from "https://cran.r-project.org/bin/windows/Rtools/". Finally, you need the package "cmdstanr", in R :  
+install.packages("cmdstanr", repos = c('https://stan-dev.r-universe.dev', getOption("repos")))
+ 
+Install 'VecchiaCensored" from GitHub using:
 
 ```r
 # Install devtools if needed
 install.packages("devtools")
 
 # Install VecchiaCensored
-devtools::install_github("yourusername/VecchiaCensored")
+devtools::install_github("yacine-idir/VecchiaCensored")
 ```
 
 ## Quick Start
@@ -82,7 +84,7 @@ model_freq_no_cen <- fit_model(
 )
 
 # View parameter estimates
-summary(model_freq_no_cen)
+summary.fit_model(model_freq_no_cen)
 
 # Predict at new locations
 prediction <- prediction(
@@ -109,7 +111,7 @@ model_freq_cen <- fit_model(
   censored_indices = grille_GP$is_censored
 )
 
-summary(model_freq_cen)
+summary.fit_model(model_freq_cen)
 
 # Predict
 prediction <- prediction(
@@ -141,7 +143,7 @@ model_bay_no_cen <- fit_model(
 )
 
 # View posterior summaries and density plots
-summary(model_bay_no_cen)
+summary.fit_model(model_bay_no_cen)
 
 # Predict
 prediction <- prediction(
@@ -170,7 +172,7 @@ model_bay_cen <- fit_model(
   parallel_chains = 3
 )
 
-summary(model_bay_cen)
+summary.fit_model(model_bay_cen)
 
 prediction <- prediction(
   model_bay_cen,
@@ -198,7 +200,7 @@ model_freq_no_cen <- fit_model(
   svc_indices = 1:2  # Both covariates vary spatially
 )
 
-summary(model_freq_no_cen)
+summary.fit_model(model_freq_no_cen)
 
 # Predict
 prediction <- prediction(
@@ -230,7 +232,7 @@ model_bay_cen <- fit_model(
   svc_indices = c(1, 2)
 )
 
-summary(model_bay_cen)
+summary.fit_model(model_bay_cen)
 
 # Prediction with simulations and coefficient predictions
 prediction <- prediction(
@@ -292,15 +294,16 @@ All datasets include spatial coordinates, covariates, true responses, and censor
 
 Main dependencies:
 - `GpGp`: Core Vecchia approximation functionality
-- `cmdstanr`: Bayesian inference (optional)
-- `bayesplot`: Visualization of Bayesian results (optional)
+- `Matrix`: Fast matrix operations
+- `cmdstanr`: Bayesian inference 
+- `bayesplot`: Visualization of Bayesian results 
 
 ## Citation
 
 If you use this package in your research, please cite:
 
 ```
-[Your citation information here]
+Paper refrence comming soon
 ```
 
 ## License
@@ -309,7 +312,7 @@ If you use this package in your research, please cite:
 
 ## Contact
 
-For questions, issues, or contributions, please [open an issue](https://github.com/yourusername/VecchiaCensored/issues) on GitHub.
+For questions, issues, or contributions, please [open an issue](https://github.com/yacine-idir/VecchiaCensored/issues) on GitHub.
 
 ## Acknowledgments
 
