@@ -55,6 +55,11 @@ Estimate model parameters from observed data.
 - `svc_indices`: Indices of covariates with spatially varying effects
 - `M`: Number of nearest neighbors for Vecchia approximation
 - `bayesian`: Logical, use Bayesian inference (default: FALSE)
+- `fixed_range`: Logical, use same range for all SVCs (default: TRUE)
+- `chains`: Number of chains in the MCMC sampling, only when bayesian=TRUE.
+- `iter_warmup`: Number of warmup iterations in the MCMC sampling, only when bayesian=TRUE.
+- `iter_sampling`: Number of iterations in the MCMC sampling, only when bayesian=TRUE.
+- `parallel_chains`: Number of parallel chains in the MCMC sampling, only when bayesian=TRUE.
 
 ### `prediction()`
 Predict at new locations using a fitted model.
