@@ -27,7 +27,7 @@ Install 'VecchiaCensored" from GitHub using:
 install.packages("devtools")
 
 # Install VecchiaCensored
-devtools::install_github("yacine-idir/VecchiaCensored")
+devtools::install_github("yacine-idir/VecchiaCensored-R-Package")
 ```
 
 ## Quick Start
