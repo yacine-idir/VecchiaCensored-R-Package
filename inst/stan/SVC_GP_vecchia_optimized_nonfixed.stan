@@ -92,7 +92,7 @@ data {
 
   vector[pX] prior_mean_alpha;
   vector<lower=0>[pX] prior_sd_alpha;
-  real prior_mean_log_sigma;
+  vector[p] prior_mean_log_sigma;    // un prior mean par composante
   real<lower=0> prior_sd_log_sigma;
   real prior_mean_log_phi;
   real<lower=0> prior_sd_log_phi;
