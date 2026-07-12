@@ -170,7 +170,7 @@ fit_SVC_nocensored_bayesian_Vecchia <- function(Y_obs, locs_obs, X_obs, M,
     prior_mean_alpha     = mle_beta,
     prior_sd_alpha       = prior_sd_alpha,
     log_sigma_prior_means <- rep(log(0.1), p_svc)       # par défaut : petit
-    if (!is.null(int_idx)) log_sigma_prior_means[int_idx] <- log(mle_sigma)  # intercept : MLE
+    if (!is.null(int_idx)) {log_sigma_prior_means[int_idx] <- log(mle_sigma) } # intercept : MLE
     prior_mean_log_sigma = log_sigma_prior_means         # vecteur    prior_sd_log_sigma   = PRIOR_SD_LOG,
     prior_mean_log_phi   = log(max(mle_phi, 0.01)),
     prior_sd_log_phi     = PRIOR_SD_LOG,
