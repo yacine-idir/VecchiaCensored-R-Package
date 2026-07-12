@@ -238,7 +238,7 @@ fit_SVC_nocensored_bayesian_Vecchia <- function(Y_obs, locs_obs, X_obs, M,
     iter_warmup     = iter_warmup,
     iter_sampling   = iter_sampling,
     init            = init_fn,
-    adapt_delta     = 0.9
+    adapt_delta     = 0.7
   )
 
   return(list(MCMC, data_stan))
