@@ -155,6 +155,9 @@ fit_SVC_nocensored_bayesian_Vecchia <- function(Y_obs, locs_obs, X_obs, M,
   }
 
   # ── 6. Stan data ─────────────────────────────────────────
+  log_sigma_prior_means <- rep(log(0.1), p_svc)
+  if (!is.null(int_idx)) log_sigma_prior_means[int_idx] <- log(mle_sigma)
+
   data_stan <- list(
     N   = n,
     Z   = all_Y,
@@ -169,15 +172,13 @@ fit_SVC_nocensored_bayesian_Vecchia <- function(Y_obs, locs_obs, X_obs, M,
     uncensored_idx = censored_indices,
     prior_mean_alpha     = mle_beta,
     prior_sd_alpha       = prior_sd_alpha,
-    log_sigma_prior_means <- rep(log(0.1), p_svc)       # par défaut : petit
-    if (!is.null(int_idx)) {log_sigma_prior_means[int_idx] <- log(mle_sigma) } # intercept : MLE
-    prior_mean_log_sigma = log_sigma_prior_means         # vecteur    prior_sd_log_sigma   = PRIOR_SD_LOG,
+    prior_mean_log_sigma = log_sigma_prior_means,
+    prior_sd_log_sigma   = PRIOR_SD_LOG,
     prior_mean_log_phi   = log(max(mle_phi, 0.01)),
     prior_sd_log_phi     = PRIOR_SD_LOG,
     prior_mean_log_tau   = log(max(mle_tau, 0.01)),
     prior_sd_log_tau     = PRIOR_SD_LOG
   )
-
   cat(sprintf("  [Priors (log scale, SD=%.1f)]\n", PRIOR_SD_LOG))
   cat(sprintf("    sigma: 95%% CI ~ [%.1f, %.1f]\n",
               mle_sigma * exp(-2 * PRIOR_SD_LOG), mle_sigma * exp(2 * PRIOR_SD_LOG)))
