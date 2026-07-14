@@ -113,7 +113,7 @@ data {
   // Prior hyperparameters (on LOG scale for sigma, phi, tau)
   vector[pX] prior_mean_alpha;
   vector<lower=0>[pX] prior_sd_alpha;
-  real prior_mean_log_sigma;         // log(MLE_sigma)
+  vector[p] prior_mean_log_sigma;         // log(MLE_sigma)
   real<lower=0> prior_sd_log_sigma;  // e.g. 1.0
   real prior_mean_log_phi;           // log(MLE_phi)
   real<lower=0> prior_sd_log_phi;    // e.g. 1.0
