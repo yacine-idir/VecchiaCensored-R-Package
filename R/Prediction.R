@@ -47,7 +47,7 @@ prediction <- function(fit_object, locs_pred, X_pred, M,
   # ==================================================================
   } else if (model_type %in% c("svc_freq", "svc_freq_censored")) {
 
-    result <- VecchiaCensored:::prediction_freq(
+    result <- prediction_freq(
       beta        = fit_object$parameters$beta,
       sigma       = fit_object$parameters$sigma,
       phi         = fit_object$parameters$phi,
@@ -205,7 +205,7 @@ prediction <- function(fit_object, locs_pred, X_pred, M,
           X_svc_cen <- pc$ALL_X[, svc_idx, drop = FALSE]
         }
 
-        L_cen <- Matrix::t(VecchiaCensored:::precision_decomp_sparse(
+        L_cen <- Matrix::t(precision_decomp_sparse(
           cov_list, X_svc_cen, pc$NN, pc$ALL_locs, pc$n_ncen + 1))
 
         y_cens_pred <- pc$ALL_X[pc$n_ncen + (1:length(pc$cen_pos)), , drop = FALSE] %*% beta_i -
@@ -245,7 +245,7 @@ prediction <- function(fit_object, locs_pred, X_pred, M,
         cov_list[[j]] <- c(sigma_sq = sigma_i[j], phi = phi_i[j])
       cov_list$nugget <- as.numeric(tau_i)
 
-      L_pred <- Matrix::t(VecchiaCensored:::precision_decomp_sparse(
+      L_pred <- Matrix::t(precision_decomp_sparse(
         cov_list, X_svc_all, NN_pred, ALL_locs_pred, n_obs + 1))
 
       pred_i <- ALL_X_pred[(n_obs + 1):n_total, , drop = FALSE] %*% beta_i -
